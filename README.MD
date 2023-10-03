@@ -24,7 +24,7 @@ Before you can run the tests, make sure you have the following installed:
 
 # Running Tests
 
-### NOTE: In selenium_wd_basics.py file check comments and put your e-mail/password where it's required.
+### NOTE: In selenium_wd_basics.py file change __EMAIL and __PASSWORD variables to a valid values.
 
 1. Open your terminal.
 
@@ -38,7 +38,7 @@ Before you can run the tests, make sure you have the following installed:
    python -m unittest selenium_wd_basics
 
 # Test Cases
-## The following API test cases are included:
+## The following selenium test cases are included:
 
 1. Login positive/negative - test_login
 2. Forgot password - test_forgot_password

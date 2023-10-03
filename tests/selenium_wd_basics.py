@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 
 
 class TestSelenium(unittest.TestCase):
+    __EMAIL = "valid.email@kaseya.com"
+    __PASSWORD = "ValidPassword"
 
     def setUp(self) -> None:
         # setup
@@ -22,15 +24,13 @@ class TestSelenium(unittest.TestCase):
 
         self.driver.find_element(By.XPATH, "//*[@id='edit-name']").clear()
         self.driver.find_element(By.XPATH, "//*[@id='edit-name']").click()
-        # CHANGE e-mail
-        self.driver.find_element(By.ID, "edit-name").send_keys("valid.email@kaseya.com")
+        self.driver.find_element(By.ID, "edit-name").send_keys(self.__EMAIL)
         self.driver.find_element(By.ID, "edit-submit").click()
         self.driver.find_element(By.ID, "edit-pass").send_keys("valid.email@kaseya.com")
         self.driver.find_element(By.ID, "edit-submit").click()
         self.assertTrue(self.driver.find_element(By.XPATH, "//a[@data-dismiss='alert']/.."))
-        # CHANGE password
         self.driver.find_element(By.ID, "edit-pass").clear()
-        self.driver.find_element(By.ID, "edit-pass").send_keys("VALID.PASSWORD")
+        self.driver.find_element(By.ID, "edit-pass").send_keys(self.__PASSWORD)
         self.driver.find_element(By.ID, "edit-submit").click()
 
         self.assertTrue(self.driver.find_element(By.XPATH, "//div/h1[contains(text(),'Authentication')]"))
@@ -40,8 +40,7 @@ class TestSelenium(unittest.TestCase):
     def test_forgot_password(self):
         self.driver.get(url="https://dev.darkwebid.io/user/login?destination=resellers")
         self.driver.find_element(By.XPATH, "//*[@id='edit-name']").click()
-        # CHANGE e-mail
-        self.driver.find_element(By.ID, "edit-name").send_keys("valid.email@kaseya.com")
+        self.driver.find_element(By.ID, "edit-name").send_keys(self.__EMAIL)
         self.driver.find_element(By.ID, "edit-submit").click()
         self.driver.find_element(By.XPATH, "//*[@id='edit-forgot']/a").click()
         self.driver.find_element(By.ID, "edit-name").send_keys("asd@kaseya.com")
